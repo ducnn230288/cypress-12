@@ -1,17 +1,16 @@
 /// <reference types="cypress" />
 class ResultPage {
   elements = {
-    avgSalary: () => cy.get("div.graph-container"),
-    stateSalaryTitle: () => cy.get("app-salary-difference-box p.title").eq(0),
-    stateSalaryDifference: () => cy.get("p.difference").eq(0),
-    yearOfExperienceTitle: () =>
-      cy.get("app-salary-difference-box p.title").eq(1),
-    yearOfExperienceValue: () => cy.get("p.difference").eq(1),
-    travelTitle: () => cy.get("app-salary-difference-box p.title").eq(2),
-    travelValue: () => cy.get("p.difference").eq(2),
-    salaryDifferenceBox: () => cy.get("app-salary-difference-box"),
-    tips: () => cy.get("app-results-tips"),
-    resultTitle: () => cy.get("app-layout-section.title-section"),
+    avgSalary: () => cy.get('div.graph-container'),
+    stateSalaryTitle: () => cy.get('app-salary-difference-box p.title').eq(0),
+    stateSalaryDifference: () => cy.get('p.difference').eq(0),
+    yearOfExperienceTitle: () => cy.get('app-salary-difference-box p.title').eq(1),
+    yearOfExperienceValue: () => cy.get('p.difference').eq(1),
+    travelTitle: () => cy.get('app-salary-difference-box p.title').eq(2),
+    travelValue: () => cy.get('p.difference').eq(2),
+    salaryDifferenceBox: () => cy.get('app-salary-difference-box'),
+    tips: () => cy.get('app-results-tips'),
+    resultTitle: () => cy.get('app-layout-section.title-section'),
   };
 
   verifyAvgSalary(value: string) {
@@ -19,7 +18,7 @@ class ResultPage {
   }
 
   verifyStateSalaryTitle(value: string) {
-    this.elements.stateSalaryTitle().should("contain", value);
+    this.elements.stateSalaryTitle().should('contain', value);
   }
 
   verifyStateSalaryDifference(value: string) {
@@ -27,7 +26,7 @@ class ResultPage {
   }
 
   verifyYearOfExperienceTitle(value: string) {
-    this.elements.yearOfExperienceTitle().should("contain", value);
+    this.elements.yearOfExperienceTitle().should('contain', value);
   }
 
   verifyYearOfExperienceValue(value: string) {
@@ -35,7 +34,7 @@ class ResultPage {
   }
 
   verifyTravelTitle(value: string) {
-    this.elements.travelTitle().should("contain", value);
+    this.elements.travelTitle().should('contain', value);
   }
 
   verifyTravelValue(value: string) {
@@ -43,29 +42,27 @@ class ResultPage {
   }
 
   verifyPayDifferenceBoxCount(count: number) {
-    this.elements.salaryDifferenceBox().should("have.length", count);
+    this.elements.salaryDifferenceBox().should('have.length', count);
   }
 
   // If on the result page, the url is ergebnis
   verifySuccessMessage() {
-    cy.url().should("include", "/ergebnis");
-    this.elements
-      .resultTitle()
-      .should("contain", "Dein mögliches Durchschnittgehalt");
+    cy.url().should('include', '/ergebnis');
+    this.elements.resultTitle().should('contain', 'Dein mögliches Durchschnittgehalt');
   }
 
   verifyFailureMessage() {
-    cy.url().should("include", "/ergebnis");
+    cy.url().should('include', '/ergebnis');
     this.elements
       .resultTitle()
       .should(
-        "contain",
-        "Es scheint, dass Du noch keine abgeschlossene oder in Deutschland anerkannte Ausbildung hast"
+        'contain',
+        'Es scheint, dass Du noch keine abgeschlossene oder in Deutschland anerkannte Ausbildung hast',
       );
   }
 
   verifyTipsVisible() {
-    this.elements.tips().should("be.visible");
+    this.elements.tips().should('be.visible');
   }
 }
 export default ResultPage;
