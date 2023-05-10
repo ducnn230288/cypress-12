@@ -20,4 +20,7 @@ export default defineConfig({
     defaultCommandTimeout: 30000,
     specPattern: "cypress/e2e/**/*.feature",
   },
+  env: {
+    allureResultsPath: 'cypress/reports/allure-results',
+  },
 });

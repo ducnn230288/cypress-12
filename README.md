@@ -29,17 +29,17 @@ To run and select the browser you can use:
 Both will create the folder reports/cucumber-json, this will help in creating the html report in the next section.
 
 ## Generate reports
-Only when reports/cucumber-json folder folder is generated, follow the next steps 
+Only when reports/allure-results folder is generated, follow the next steps 
 
-Also, you need to have ts-node installed
+Also, you need to have Allure Framework installed
 <br />
-`npm install -g ts-node`
+`https://docs.qameta.io/allure/#_installing_a_commandline`
 
-Run the script (this depends on reports/cucmber-json folder)
+Run the script (this depends on reports/allure-results folder)
 <br />
-`ts-node generate-report.ts`
+`npm run post-test`
 
-This will create report/testcases-report, open index.html in your browser
+This will create report/allure-report, and auto open browser show reports
 
 ![image](https://user-images.githubusercontent.com/32613878/218597479-fd17b476-4ac6-4ab4-845d-7643b99c706c.png)
 
