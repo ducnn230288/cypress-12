@@ -15,12 +15,11 @@ export default defineConfig({
       allureWriter(on, config);
     },
     baseUrl: "https://staging.powerus.de/",
-    viewportHeight: 760,
-    viewportWidth: 360,
     defaultCommandTimeout: 30000,
     specPattern: "cypress/e2e/**/*.feature",
   },
   env: {
     allureResultsPath: 'cypress/reports/allure-results',
+    allure: true,
   },
 });

@@ -19,13 +19,14 @@
   "scripts": {
     "format": "prettier --write \"cypress/**/*.ts\"",
     "lint": "eslint \"cypress/**/*.ts\" --fix",
+    "cy:run": "npx cypress run --e2e --browser chrome --config viewportWidth=360,viewportHeight=760",
     "pretest": "rimraf cypress/reports && rimraf cypress/screenshots && rimraf cypress/videos && rimraf cypress/downloads",
-    "cy:run": "npx cypress run --env allure=true",
     "test": "npm run pretest && npm run cy:run",
     "allure:report": "allure generate ./cypress/reports/allure-results --clean -o ./cypress/reports/allure-report",
     "open-report": "allure open ./cypress/reports/allure-report",
     "post-test": "npm run allure:report && npm run open-report",
-    "open": "npx cypress open"
+    "open": "npx cypress open --e2e --browser chrome --config viewportWidth=1366,viewportHeight=768",
+    "open:mobile": "npx cypress open --e2e --browser chrome --config viewportWidth=360,viewportHeight=760"
   },
   "author": "",
   "license": "ISC",
