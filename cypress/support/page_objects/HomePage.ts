@@ -6,15 +6,9 @@ class HomePage {
     blogSelection: (optionText: string) => cy.get('span.mat-button-wrapper').contains(optionText),
   };
 
-  clickOnCookiesAcceptButton() {
-    this.elements.cookiesAcceptButton().click();
-  }
-
-  clickOnBurgerButton() {
-    this.elements.burgerButton().click();
-  }
-
-  selectBlogOption(optionText: string) {
+  clickOnCookiesAcceptButton = () => this.elements.cookiesAcceptButton().click()
+  clickOnBurgerButton = () => this.elements.burgerButton().click()
+  selectBlogOption = (optionText: string) => {
     this.elements.blogButton().click();
     this.elements.blogSelection(optionText).click();
   }

@@ -9,33 +9,24 @@ class QuestionnairePage {
     seeSalaryButton: () => cy.get('button.cta').contains('Kostenlos Dein Gehalt sehen'),
   };
 
-  clickOnCheckSalary() {
-    this.elements.checkSalary().click();
-  }
-
-  clickOnEducationType(titleText: string) {
+  clickOnCheckSalary = () => this.elements.checkSalary().click()
+  clickOnEducationType = (titleText: string) => {
     cy.url().should('include', '/gehaltscheck');
     this.elements.educationType(titleText).click();
   }
-
-  clickOnYearsOfExperience(experience: string) {
+  clickOnYearsOfExperience = (experience: string) => {
     cy.url().should('include', '/gehaltscheck?step=experience');
     this.elements.yearsOfExperience(experience).click();
   }
-
-  clickOnTravelType(titleText: string) {
+  clickOnTravelType = (titleText: string) => {
     cy.url().should('include', '/gehaltscheck?step=willingness-to-travel');
     this.elements.travelType(titleText).click();
   }
-
-  selectState(optionText: string) {
+  selectState = (optionText: string) => {
     cy.url().should('include', '/gehaltscheck?step=state');
     this.elements.StateDropdown().click();
     this.elements.StateSelection(optionText).click();
   }
-
-  clickOnSeeSalaryButton() {
-    this.elements.seeSalaryButton().click();
-  }
+  clickOnSeeSalaryButton = () => this.elements.seeSalaryButton().click()
 }
 export default QuestionnairePage;
