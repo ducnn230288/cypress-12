@@ -4,9 +4,8 @@ import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 const loginPage = new LoginPage();
 
 Given('User opens login page', () => cy.visit('/'));
-
-// And('User change the language to "{}"', () => loginPage.changeLanguage())
-
+And('User opens language dropdown', () => loginPage.openLanguageDropdown() )
+And('User change the language to "{}"', (text: string) => loginPage.changeLanguageToEnglish(text)),
 When('User enters correct email "{}" to Email field',(text: string) => loginPage.fillEmail(text));
 
 When('User enters incorrect email "{}" to Email field',(text: string) => loginPage.fillEmail(text));
