@@ -14,7 +14,7 @@ export default defineConfig({
       on("file:preprocessor", cucumber(options));
       allureWriter(on, config);
     },
-    baseUrl: "https://staging.powerus.de/",
+    baseUrl: "https://crypttotrade.dev/login/",
     defaultCommandTimeout: 30000,
     specPattern: "cypress/e2e/**/*.feature",
   },
