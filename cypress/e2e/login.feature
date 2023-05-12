@@ -1,8 +1,10 @@
 Feature: Login
 Background: User is on login page
     Given User opens login page
+    Then User is navigated to "login" page 
     And User opens language dropdown
     And User change the language to "English"
+    Then User sees the language is "English"
 
 Scenario: LOG_001 Verify that user can successfully login with correct email and password 
     When User enters correct email "crypto_test" to Email field

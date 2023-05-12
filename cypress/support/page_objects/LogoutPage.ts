@@ -8,6 +8,6 @@ class LogoutPage {
     openProfileMenu = (name: string) => this.elements.profileName(name).click()
     verifyProfileMenuItem = (menu: string) => this.elements.logOut(menu).should('have.text', menu)
     clickLogout = (text: string) => this.elements.logOut(text).click()
-    verifyNavigateToSigninPage = (text: string) => this.elements.signInText(text)
+    verifyNavigateToSigninPage = (text: string) => this.elements.signInText(text).should('have.text', text)
 }
 export default LogoutPage;

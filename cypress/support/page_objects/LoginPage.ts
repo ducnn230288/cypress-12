@@ -8,13 +8,19 @@ class LoginPage {
     validationTextIncorrectInfo: (validaText: string) => cy.get('p[class="text-[red]"]').contains(validaText),
     pageTitle: () => cy.get('.dashboard_bar'),
     languageDropdown: () => cy.get('.ant-dropdown-trigger'),
+    languageDropdown2: (text: string) => cy.get('.ant-dropdown-trigger').contains(text),
     languageSelect: (text: string) => cy.get('.ant-dropdown-menu').contains(text)
 
   };
+  
+    verifyUrlPage = (text: string) => cy.url().should('include', text)
+
     openLanguageDropdown = () => this.elements.languageDropdown().click();
 
     changeLanguageToEnglish = (text: string) => this.elements.languageSelect(text).contains(text).click();
 
+    verifyselectedLanguage = (text: string) => this.elements.languageDropdown2(text).should('have.text', text);
+    
     fillEmail = (text: string) => this.elements.emailTextbox().type(text);
 
     fillPassword = (text: string) => this.elements.passwordTextbox().type(text);
