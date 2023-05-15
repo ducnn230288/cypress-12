@@ -19,15 +19,14 @@ import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
- require('cypress-xpath')
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
-      compareText(element: Cypress.Chainable<JQuery<HTMLButtonElement>>, value: string): Chainable<Element>;
-      iframe(): Chainable<Element>;
+      compareText(element: any, value: string): Chainable<Element>;
+      iframe(): Chainable<JQueryWithSelector>;
+      typeRandom(value: string, type?: 'word' | 'words' | 'number'): Chainable<JQueryWithSelector>;
     }
   }
 }
-
