@@ -4,6 +4,7 @@
   "main": "index.js",
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.39.0",
+    "@types/faker": "^5.5.9",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
     "cucumber": "^6.0.7",
@@ -12,6 +13,7 @@
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "faker": "^5.5.3",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.0",
     "typescript": "^4.9.5"

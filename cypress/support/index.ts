@@ -25,6 +25,8 @@ declare global {
   namespace Cypress {
     interface Chainable {
       compareText(element: any, value: string): Chainable<Element>;
+      iframe(): Chainable<JQueryWithSelector>;
+      typeRandom(value: string, type?: 'word' | 'words' | 'number'): Chainable<JQueryWithSelector>;
     }
   }
 }
