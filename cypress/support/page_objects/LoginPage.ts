@@ -9,7 +9,8 @@ class LoginPage {
     pageTitle: () => cy.get('.dashboard_bar'),
     languageDropdown: () => cy.get('.ant-dropdown-trigger'),
     languageDropdown2: (text: string) => cy.get('.ant-dropdown-trigger').contains(text),
-    languageSelect: (text: string) => cy.get('.ant-dropdown-menu').contains(text)
+    languageSelect: (text: string) => cy.get('.ant-dropdown-menu').contains(text),
+    forgotPasswordLink: (text: string) => cy.get('a').contains(text)
 
   };
   
@@ -27,13 +28,15 @@ class LoginPage {
 
     clickOnSignMeInButton = (text: string) => this.elements.signMeInButton(text).click();
 
-    verifyPageTitle = (text: string) => this.elements.pageTitle().should('have.text',text)
+    verifyPageTitle = (text: string) => this.elements.pageTitle().should('have.text',text);
 
-    verifyValidationText = (validaText: string) => this.elements.validationText2(validaText).should('have.text', validaText)
+    verifyValidationText = (validaText: string) => this.elements.validationText2(validaText).should('have.text', validaText);
 
-    verifyNumberOfValidation = (number: string) => this.elements.validationText().should('have.length', number)
+    verifyNumberOfValidation = (number: string) => this.elements.validationText().should('have.length', number);
 
-    verifyvalidationTextIncorrectInfo = (text: string) => this.elements.validationTextIncorrectInfo(text).should('have.text', text)
+    verifyvalidationTextIncorrectInfo = (text: string) => this.elements.validationTextIncorrectInfo(text).should('have.text', text);
+
+    clickForgotPasswordLink = (text: string) => this.elements.forgotPasswordLink(text).click();
 
  }
 export default LoginPage;

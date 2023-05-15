@@ -7,7 +7,7 @@ Given('User opens login page', () => cy.visit('/'));
 
 Then('User is navigated to "{}" page', (text: string) => loginPage.verifyUrlPage(text));
 
-And('User opens language dropdown', () => loginPage.openLanguageDropdown());
+When('User opens language dropdown', () => loginPage.openLanguageDropdown());
 
 And('User change the language to "{}"', (text: string) => loginPage.changeLanguageToEnglish(text));
 

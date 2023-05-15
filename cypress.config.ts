@@ -4,7 +4,9 @@ const cucumber = require("cypress-cucumber-preprocessor").default;
 const browserify = require("@cypress/browserify-preprocessor");
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 export default defineConfig({
+  chromeWebSecurity: false,
   e2e: {
+    experimentalStudio: true,
     setupNodeEvents(on, config) {
       const options = {
         ...browserify.defaultOptions,
@@ -22,4 +24,6 @@ export default defineConfig({
     allureResultsPath: 'cypress/reports/allure-results',
     allure: true,
   },
+
+    
 });

@@ -2,7 +2,7 @@ Feature: Logout
 Background: User login successfully
     Given User opens login page
     Then User is navigated to "login" page 
-    And User opens language dropdown
+    When User opens language dropdown
     And User change the language to "English"
     Then User sees the language is "English"
     When User enters correct email "crypto_test" to Email field

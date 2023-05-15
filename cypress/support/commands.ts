@@ -12,3 +12,18 @@ Cypress.Commands.add('compareText', (element, expectedValue): any => {
     .invoke('trim')
     .should('eq', expectedValue);
 });
+
+declare namespace Cypress {
+  interface Chainable {
+    switchToIframe(): Chainable<Element>;
+  }
+}
+
+Cypress.Commands.add('switchToIframe', { prevSubject: 'element' }, ($iframe: JQuery<Element>) => {
+  return new Cypress.Promise<Element>(resolve => {
+    $iframe.ready(() => {
+      resolve($iframe.contents().find('body'));
+    });
+  });
+});
+// require('cypress-iframe')

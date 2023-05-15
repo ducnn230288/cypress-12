@@ -2,7 +2,7 @@ Feature: Login
 Background: User is on login page
     Given User opens login page
     Then User is navigated to "login" page 
-    And User opens language dropdown
+    When User opens language dropdown
     And User change the language to "English"
     Then User sees the language is "English"
 

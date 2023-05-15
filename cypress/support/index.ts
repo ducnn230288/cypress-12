@@ -19,6 +19,7 @@ import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+ require('cypress-xpath')
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -28,3 +29,4 @@ declare global {
     }
   }
 }
+
