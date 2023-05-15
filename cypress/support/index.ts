@@ -25,7 +25,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
-      compareText(element: any, value: string): Chainable<Element>;
+      compareText(element: Cypress.Chainable<JQuery<HTMLButtonElement>>, value: string): Chainable<Element>;
       iframe(): Chainable<Element>;
     }
   }
