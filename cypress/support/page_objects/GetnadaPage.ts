@@ -7,18 +7,11 @@ class GetnadaPage {
         mailTitle: (text: string) => cy.get('h1').contains(text),
 
         verifyButton: (text: string) => {
-           const getIframe = cy.get('#the_message_iframe')
-              .its('0.contentDocument.body')
-              .should('be.visible')
-              .then(cy.wrap)
-            getIframe.get('a').contains(text) 
-              
-    },
+          cy.get('iframe#the_message_iframe').iframe().find('a.button').should('have.text', text)},
 
         mailLink: (text: string) => cy.get('a').contains(text),
-        
     }
-    
+
 
     fillUsername = (name: string) => {
         this.elements.username().clear();
@@ -33,7 +26,6 @@ class GetnadaPage {
 
     clickVerifyButton = (text: string) => {
         this.elements.verifyButton(text)
-       
      }
     verifyUrl = () => cy.url().should('include', "message")
 

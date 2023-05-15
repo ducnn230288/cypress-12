@@ -26,6 +26,7 @@ declare global {
   namespace Cypress {
     interface Chainable {
       compareText(element: any, value: string): Chainable<Element>;
+      iframe(): Chainable<Element>;
     }
   }
 }
