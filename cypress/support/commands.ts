@@ -33,5 +33,5 @@ Cypress.Commands.add('typeRandom', { prevSubject: 'element' }, (element, text, t
         break;
     }
   }
-  cy.wrap(element).type(text);
+  cy.wrap(element).clear().type(text);
 });
