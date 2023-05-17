@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import faker from 'faker';
+import GetnadaPage from './page_objects/GetnadaPage';
 
 Cypress.Commands.add('compareText', (element, expectedValue): any =>
   element
@@ -25,9 +26,9 @@ Cypress.Commands.add('typeRandom', { prevSubject: 'element' }, (element, text, t
       case 'words':
         text = text.replace(random, faker.random.words(length));
         break;
-      case 'email':
-        text = text.replace(random, faker.internet.email().toLowerCase());
-        break;
+      // case 'email':
+      //   text = text.replace(random, faker.internet.email().toLowerCase());
+      //   break;
       default:
         text = text.replace(random, faker.random.word());
         break;

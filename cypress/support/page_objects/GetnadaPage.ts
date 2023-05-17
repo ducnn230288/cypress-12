@@ -1,3 +1,5 @@
+import SignupPage from "./SignUpPage";
+
 class GetnadaPage {
     elements = {
         // Getnada
@@ -13,9 +15,12 @@ class GetnadaPage {
     }
 
 
-    fillUsername = (name: string) => {
+    fillUsername = () => {
         this.elements.username().clear();
-        this.elements.username().type(name);
+             cy.get('@username').then(($name) => {
+                const name = $name.text()
+                this.elements.username().type(name)
+              })       
     }
 
     selectDomain = (domain: string) => this.elements.mailDomain().select(domain);

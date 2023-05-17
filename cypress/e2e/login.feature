@@ -2,8 +2,7 @@ Feature: Login
 Background: User is on login page
     Given User opens login page
     Then User is navigated to "login" page 
-    When User opens language dropdown
-    And User change the language to "English"
+    When User change the language to "English"
     Then User sees the language is "English"
 
 Scenario: LOG_001 Verify that user can successfully login with correct email and password 
@@ -19,13 +18,13 @@ Scenario: LOG_003 Verify that user cannot successfully login with correct email 
     Then User sees the info validation text "Wrong email or password."
 
 Scenario: LOG_004 Verify that user cannot successfully login with incorrect email and correct password 
-    When User enters incorrect email "crypto_test12" to Email field
+    When User enters incorrect email "crypto_test_123456" to Email field
     And User enters correct password "Crypto2512" to Password field
     And User clicks "Sign Me In" button
     Then User sees the info validation text "Wrong email or password."
 
 Scenario: LOG_005 Verify that user cannot successfully login with incorrect email and password 
-    When User enters incorrect email "crypto_test12" to Email field
+    When User enters incorrect email "crypto_test_123456" to Email field
     And User enters incorrect password "Crypto2512" to Password field
     And User clicks "Sign Me In" button
     Then User sees the info validation text "Wrong email or password."
