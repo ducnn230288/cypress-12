@@ -20,7 +20,7 @@ Cypress.Commands.add('typeRandom', { prevSubject: 'element' }, (element, text, t
   if (text.indexOf(random) > -1) {
     switch (type) {
       case 'number':
-        text = text.replace(random, faker.random.number(length).toString());
+        text = text.replace(random, faker.finance.account(length).toString());
         break;
       case 'words':
         text = text.replace(random, faker.random.words(length));
