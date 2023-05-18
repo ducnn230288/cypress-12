@@ -1,18 +1,25 @@
 import { defineConfig } from "cypress";
 
-const cucumber = require("cypress-cucumber-preprocessor").default;
-const browserify = require("@cypress/browserify-preprocessor");
+import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor/esbuild');
+const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 export default defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      const options = {
-        ...browserify.defaultOptions,
-        typescript: require.resolve("typescript"),
-      };
-      // implement node event listeners here
-      on("file:preprocessor", cucumber(options));
+    async setupNodeEvents(
+      on: Cypress.PluginEvents,
+      config: Cypress.PluginConfigOptions,
+    ): Promise<Cypress.PluginConfigOptions> {
+      await addCucumberPreprocessorPlugin(on, config);
+
+      on(
+        'file:preprocessor',
+        createBundler({
+          plugins: [createEsbuildPlugin(config)],
+        }),
+      );
       allureWriter(on, config);
+      return config;
     },
     baseUrl: "https://staging.powerus.de/",
     defaultCommandTimeout: 30000,
