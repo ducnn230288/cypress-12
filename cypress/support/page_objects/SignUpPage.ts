@@ -1,4 +1,4 @@
-import faker from "faker";
+import * as faker from 'faker';
 
 class SignupPage {
     elements = {
@@ -27,23 +27,16 @@ class SignupPage {
     // } 
 
     fillUsername = () => {
-            const randomUsername = "Auto_user_" + faker.random.number({min:10000, max:99999})
-            this.elements.usernameTextbox().type(randomUsername.toString()).invoke('val').as('username')
-        } 
+            const randomUsername = "Auto_user_" + faker.datatype.number({min:10000, max:99999})
+            this.elements.usernameTextbox().type(randomUsername).invoke('val').as('username')
+        }
 
-    
-    // fillEmail = () => {
-    //     cy.get('@username').then(($name) => {
-    //         const randomEmail = cy.wrap($name).text();
-    //         this.elements.emailTextbox().type(randomEmail);
-    //     });       
-    //   };
-
-      fillEmail = () => {
-        cy.get('@username').then((randomEmail) => {
-          this.elements.emailTextbox().type(randomEmail as string);
-        });       
-      };
+    fillEmail = () => {
+      cy.get('@username').then(($name) => {
+          const randomEmail: string = $name.toString() + "@getnada.com";
+          this.elements.emailTextbox().type(randomEmail);
+      });       
+  };
       
     fillPassword = (password: string) => this.elements.passwordTextbox().type(password);
 
@@ -51,11 +44,11 @@ class SignupPage {
 
     searchCountryCode = () => this.elements.countryCode().type('Vietnam{enter}');
 
-    fillPhoneNumber = (number: string) => this.elements.phoneNumberTextbox().typeRandom(number);
+    fillPhoneNumber = (phone: string) => this.elements.phoneNumberTextbox().typeRandom(phone, 'number', 10);
 
-    fillCPF = (number: string) => this.elements.cpfTextbox().typeRandom(number);
+    fillCPF = (number: string) => this.elements.cpfTextbox().type(number);
 
-    fillAffiliateCode = (text: string) => this.elements.affiliateCodeTextbox().typeRandom(text);
+    fillAffiliateCode = (text: string) => this.elements.affiliateCodeTextbox().type(text);
 
 
     checkTermAndPrivacyCheckbox = () => this.elements.agreeCheckbox().check();

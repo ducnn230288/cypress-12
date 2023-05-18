@@ -9,18 +9,36 @@ Background: User opens Sign up page
     When User change the language to "English"
     Then User sees the language is "English"
 
-Scenario: User successfully sign up an account <testCaseTitle>
+Scenario: User successfully sign up an account with valid username, email, password, phone number && CPF and Affiliate code blank
     When User enters user name to Username field
     And User enters random email to Email field
     And User enters "Crypto2512!" to Password field
     And User enters "Crypto2512!" to Confirm password field
     And User searchs and selects country code is "Vietnam"
-    And User enters "_RANDOM_" to Phone number field
-    And User enters "_RANDOM_" to CPF field
-    And User enters "_RANDOM" to Affiliate code field
+    And User enters "980123456" to Phone number field
+    And User enters "747.853.852-51" to CPF field
+    # And User enters "1234567890" to Affiliate code field
     And User checks the Term of Use and Privacy Policy checkbox
-    # And User clicks "Sign Up" button
+    And User clicks "Sign Up" button
     Then User sees the successful message "Register successfully! Please verify your email."
+  
+    Given User opens Getnada page
+    When User clicks "Add inboxe" button
+    And User enters username to User field
+    And User selects domain "@getnada.com"
+    And User clicks "Add now!" button
+    And User clicks to view the mail detail "Activate your email"
+    And User click "Verify Now" button
+
+    Given User opens login page
+    Then User is navigated to "login" page 
+    When User change the language to "English"
+    Then User sees the language is "English"
+
+
+
+
+
 
 
 # Scenario: Verify that user sign up an account unsuccessfully with existing username

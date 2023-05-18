@@ -1,3 +1,4 @@
+import GetnadaPage from "../page_objects/GetnadaPage";
 import LoginPage from "../page_objects/LoginPage";
 import SignupPage from "../page_objects/SignUpPage";
 import CommonPage from "../page_objects/commonPage";
@@ -6,6 +7,7 @@ import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 const signUpPage = new SignupPage();
 const commonPage = new CommonPage();
 const loginPage = new LoginPage();
+const getnadaPage = new GetnadaPage()
 
 Given('User opens sign in page', () => commonPage.openURL());
 
@@ -19,17 +21,17 @@ When('User clicks "{}" link', (text: string) => loginPage.clickSignUpLink(text))
 
 Then('User is navigated to "{}" page', (text: string) => cy.url().should('include', text));
 
-When('User enters user name to Username field', (username: string)=> signUpPage.fillUsername());
+When('User enters user name to Username field', ()=> signUpPage.fillUsername());
 
-And('User enters random email to Email field', (email: string)=> signUpPage.fillEmail(email));
+And('User enters random email to Email field', ()=> signUpPage.fillEmail());
 
 And('User enters "{}" to Password field', (password: string)=> signUpPage.fillPassword(password));
 
 And('User enters "{}" to Confirm password field', (password: string)=> signUpPage.fillConfirmPassword(password));
 
-And('User searchs and selects country code is "{}"', (country: string)=> signUpPage.searchCountryCode());
+And('User searchs and selects country code is "{}"', ()=> signUpPage.searchCountryCode());
 
-And('User enters "{}" to Phone number field', (phoneNumber: string)=> signUpPage.fillPhoneNumber(phoneNumber));
+And('User enters "{}" to Phone number field', (phone: string)=> signUpPage.fillPhoneNumber(phone));
 
 And('User enters "{}" to CPF field', (cpfCode: string)=> signUpPage.fillCPF(cpfCode));
 
@@ -44,3 +46,20 @@ Then('User sees the successful message "{}"', (text: string) => signUpPage.verif
 Then('User sees the error message "{}"', (text: string) => commonPage.verifyValidationTextContent(text))
 
 Then('User sees the validation text "{}"', (text: string) => commonPage.verifyValidationTextContent(text))
+
+Given('User opens Getnada page', () => cy.visit('https://getnada.com/'));
+
+When('User clicks "{}" button', (text: string) => getnadaPage.clickAddbutton(text));
+
+And('User enters username to User field', (text: string) => getnadaPage.fillUsername());
+
+And('User selects domain "{}"', (text: string) => getnadaPage.selectDomain(text));
+
+And('User clicks "{}" button', (text: string) => getnadaPage.clickAddbutton(text));
+
+And('User clicks to view the mail detail "{}"', (text: string) => {
+    getnadaPage.viewMailDetail(text)
+    getnadaPage.verifyUrl()
+});
+
+And('User click "{}" button', (text: string) => getnadaPage.clickVerifyButton(text))

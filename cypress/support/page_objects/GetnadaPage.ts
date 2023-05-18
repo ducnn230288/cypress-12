@@ -1,4 +1,3 @@
-import SignupPage from "./SignUpPage";
 
 class GetnadaPage {
     elements = {
@@ -16,11 +15,11 @@ class GetnadaPage {
 
 
     fillUsername = () => {
-        this.elements.username().clear();
-             cy.get('@username').then(($name) => {
-                const name = $name.text()
-                this.elements.username().type(name)
-              })       
+        // this.elements.username().clear();
+        // cy.get('@username').then(($name) => {
+        //   const randomEmail: string = $name.toString();
+          this.elements.username().type("");
+      });  
     }
 
     selectDomain = (domain: string) => this.elements.mailDomain().select(domain);
