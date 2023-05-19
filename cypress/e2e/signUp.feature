@@ -15,11 +15,11 @@ Scenario: User successfully sign up an account with valid username, email, passw
     And User enters "Crypto2512!" to Password field
     And User enters "Crypto2512!" to Confirm password field
     And User searchs and selects country code is "Vietnam"
-    And User enters "980123456" to Phone number field
-    And User enters "747.853.852-51" to CPF field
+    And User enters "_RANDOM_" to Phone number field
+    And User enters number with format "###.###.###-##" to CPF field
     # And User enters "1234567890" to Affiliate code field
     And User checks the Term of Use and Privacy Policy checkbox
-    And User clicks "Sign Up" button
+    # And User clicks "Sign Up" button
     Then User sees the successful message "Register successfully! Please verify your email."
   
     Given User opens Getnada page

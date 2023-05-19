@@ -31,6 +31,7 @@ Cypress.Commands.add('typeRandom', { prevSubject: 'element' }, (element, text, t
         break;
       case 'format':
         text = faker.helpers.replaceSymbols(text);
+        console.log(text)
         break;
       default:
         text = text.replace(random, faker.random.word());

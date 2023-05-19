@@ -1,5 +1,6 @@
 import * as faker from 'faker';
 
+
 class SignupPage {
     elements = {
         usernameTextbox: () => cy.get('input[id="username"]'),
@@ -44,9 +45,9 @@ class SignupPage {
 
     searchCountryCode = () => this.elements.countryCode().type('Vietnam{enter}');
 
-    fillPhoneNumber = (phone: string) => this.elements.phoneNumberTextbox().typeRandom(phone, 'number', 10);
+    fillPhoneNumber = (phone: string) => this.elements.phoneNumberTextbox().typeRandom(phone, 'number',  10);
 
-    fillCPF = (number: string) => this.elements.cpfTextbox().type(number);
+    fillCPF = (number: string) => this.elements.cpfTextbox().typeRandom(number, 'format')
 
     fillAffiliateCode = (text: string) => this.elements.affiliateCodeTextbox().type(text);
 

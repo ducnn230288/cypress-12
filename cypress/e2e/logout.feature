@@ -13,3 +13,4 @@ Scenario: LOG_009 User can successfully log out
     When User opens the profile name "crypto_test"
     And User click "Logout" in the menu
     Then User is navigated to "login" page 
+

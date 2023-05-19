@@ -15,10 +15,10 @@ class GetnadaPage {
 
 
     fillUsername = () => {
-        // this.elements.username().clear();
-        // cy.get('@username').then(($name) => {
-        //   const randomEmail: string = $name.toString();
-          this.elements.username().type("");
+        this.elements.username().clear();
+        cy.get('@username').then(($name) => {
+          const randomEmail: string = $name.toString();
+          this.elements.username().type(randomEmail)
       });  
     }
 

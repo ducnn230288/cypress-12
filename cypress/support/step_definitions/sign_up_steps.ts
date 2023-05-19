@@ -33,7 +33,7 @@ And('User searchs and selects country code is "{}"', ()=> signUpPage.searchCount
 
 And('User enters "{}" to Phone number field', (phone: string)=> signUpPage.fillPhoneNumber(phone));
 
-And('User enters "{}" to CPF field', (cpfCode: string)=> signUpPage.fillCPF(cpfCode));
+And('User enters number with format "{}" to CPF field', (cpfCode: string)=> signUpPage.fillCPF(cpfCode));
 
 And('User enters "{}" to Affiliate code field', (affCode: string)=> signUpPage.fillAffiliateCode(affCode));
 
