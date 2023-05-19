@@ -2,8 +2,7 @@
 import HomePage from '../page_objects/HomePage';
 import QuestionnairePage from '../page_objects/QuestionnairePage';
 import ResultPage from '../page_objects/ResultPage';
-// @ts-ignore
-import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 
 const homePage = new HomePage();
 const questionnairePage = new QuestionnairePage();
@@ -19,13 +18,13 @@ When('User selects Elektriker Gehalt Übersicht', () => {
   homePage.selectBlogOption('Elektriker Gehalt Übersicht');
 });
 
-And('User clicks on Kostenlos Gehalt checken', () => questionnairePage.clickOnCheckSalary());
-And('User clicks on Kostenlos Gehalt checken', () => questionnairePage.clickOnCheckSalary());
-And('User has "{}" education', (educationType) => questionnairePage.clickOnEducationType(educationType));
-And('User has "{}" experience', (yearsOfExp) => questionnairePage.clickOnYearsOfExperience(yearsOfExp));
-And('User travels in a "{}" manner', (travelType) => questionnairePage.clickOnTravelType(travelType));
-And('User lives in "{}"', (state) => questionnairePage.selectState(state));
-And('User clicks on Kostenlos Dein Gehalt sehen to view result', () => questionnairePage.clickOnSeeSalaryButton());
+When('User clicks on Kostenlos Gehalt checken', () => questionnairePage.clickOnCheckSalary());
+When('User clicks on Kostenlos Gehalt checken', () => questionnairePage.clickOnCheckSalary());
+When('User has "{}" education', (educationType) => questionnairePage.clickOnEducationType(educationType));
+When('User has "{}" experience', (yearsOfExp) => questionnairePage.clickOnYearsOfExperience(yearsOfExp));
+When('User travels in a "{}" manner', (travelType) => questionnairePage.clickOnTravelType(travelType));
+When('User lives in "{}"', (state) => questionnairePage.selectState(state));
+When('User clicks on Kostenlos Dein Gehalt sehen to view result', () => questionnairePage.clickOnSeeSalaryButton());
 
 Then('User finds average salary equal to "{}"', (avgSalary) => resultPage.verifyAvgSalary(avgSalary));
 Then('"{}" State contributes to salary difference for "{}"', (state, stateSalaryDifference) => {
