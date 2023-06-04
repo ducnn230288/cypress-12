@@ -1,9 +1,9 @@
-import { defineConfig } from "cypress";
-
+import { defineConfig } from 'cypress';
 import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
 const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor/esbuild');
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+
 export default defineConfig({
   e2e: {
     async setupNodeEvents(
@@ -21,9 +21,11 @@ export default defineConfig({
       allureWriter(on, config);
       return config;
     },
-    baseUrl: "https://staging.powerus.de/",
+    baseUrl: 'http://duv23hk3u3y8m.cloudfront.net/',
+    viewportHeight: 1024,
+    viewportWidth: 1440,
     defaultCommandTimeout: 30000,
-    specPattern: "cypress/e2e/**/*.feature",
+    specPattern: 'cypress/e2e/**/*.feature',
   },
   env: {
     allureResultsPath: 'cypress/reports/allure-results',

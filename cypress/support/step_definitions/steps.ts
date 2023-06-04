@@ -1,62 +1,30 @@
 // The step definitions will use the page objects
-import HomePage from '../page_objects/HomePage';
-import QuestionnairePage from '../page_objects/QuestionnairePage';
-import ResultPage from '../page_objects/ResultPage';
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import Common from '../page_objects/Common';
 
-const homePage = new HomePage();
-const questionnairePage = new QuestionnairePage();
-const resultPage = new ResultPage();
+const common = new Common();
 
-Given('User opens Powerus', () => {
-  cy.visit('/'); // Visits the baseUrl
-  homePage.clickOnCookiesAcceptButton();
-});
+Given('User go to login page', () => cy.visit('/auth/login'));
+When('Click "{}" button', common.clickTextButton);
+When('Click "{}" icon button', common.clickIconButton);
+When('Click "{}" menu', common.clickTextMenu);
+When('Click "{}" sub menu to "{}"', common.clickTextSubMenu);
+When('Click "{}" tab button', common.clickTextTabBtn);
+When('Click on the "{}" button in the "{}" table line', common.clickButtonTableByName);
+Then('User look message "{}" popup', common.verifyMessageSwal2);
 
-When('User selects Elektriker Gehalt Übersicht', () => {
-  homePage.clickOnBurgerButton();
-  homePage.selectBlogOption('Elektriker Gehalt Übersicht');
-});
+When('Enter "{}" in "{}" with "{}"', common.typeInputByName);
+When('Enter "{}" in textarea "{}" with "{}"', common.typeTextareaByName);
+When('Enter "{}" in editor "{}" with "{}"', common.typeEditorByName);
+When('Enter "{}" in editor HTML "{}" with "{}"', common.typeEditorHtmlByName);
+When('Select file in "{}" with "{}"', common.selectFileByName);
+When('Enter date in "{}"', common.typePickerInputByName);
+When('Click switch "{}" to be activated', common.clickSwitchByName);
+When('Click radio "{}" in line "{}"', common.clickRadioByName);
+When('Click select "{}" with "{}"', common.clickSelectByName);
+Then('Required message "{}" displayed under "{}" field', common.verifyErrorByName);
 
-When('User clicks on Kostenlos Gehalt checken', () => questionnairePage.clickOnCheckSalary());
-When('User clicks on Kostenlos Gehalt checken', () => questionnairePage.clickOnCheckSalary());
-When('User has "{}" education', (educationType) => questionnairePage.clickOnEducationType(educationType));
-When('User has "{}" experience', (yearsOfExp) => questionnairePage.clickOnYearsOfExperience(yearsOfExp));
-When('User travels in a "{}" manner', (travelType) => questionnairePage.clickOnTravelType(travelType));
-When('User lives in "{}"', (state) => questionnairePage.selectState(state));
-When('User clicks on Kostenlos Dein Gehalt sehen to view result', () => questionnairePage.clickOnSeeSalaryButton());
-
-Then('User finds average salary equal to "{}"', (avgSalary) => resultPage.verifyAvgSalary(avgSalary));
-Then('"{}" State contributes to salary difference for "{}"', (state, stateSalaryDifference) => {
-  resultPage.verifyStateSalaryTitle(state);
-  resultPage.verifyStateSalaryDifference(stateSalaryDifference);
-});
-Then('"{}" state contributes to salary difference for "{}"', (state, stateSalaryDifference) => {
-  resultPage.verifyStateSalaryTitle(state);
-  resultPage.verifyStateSalaryDifference(stateSalaryDifference);
-});
-Then('"{}" experience contributes to salary difference for "{}"', (yearsOfExp, yearExpDifference) => {
-  resultPage.verifyYearOfExperienceTitle(yearsOfExp);
-  resultPage.verifyYearOfExperienceValue(yearExpDifference);
-});
-Then('"{}" experience contributes to salary difference for "{}"', (yearsOfExp, yearExpDifference) => {
-  resultPage.verifyYearOfExperienceTitle(yearsOfExp);
-  resultPage.verifyYearOfExperienceValue(yearExpDifference);
-});
-Then('"{}" travel contributes to salary difference for "{}"', (travelTitle, travelDifference) => {
-  resultPage.verifyTravelValue(travelDifference);
-  resultPage.verifyTravelTitle(travelTitle);
-});
-Then('User finds tips', () => resultPage.verifyTipsVisible());
-Then('Salary check provides estimations successfully', () => resultPage.verifySuccessMessage());
-Then('Salary check fails in providing estimations', () => resultPage.verifyFailureMessage());
-Then('User finds "{}" pay differences', (payDifferenceCount) => resultPage.verifyPayDifferenceBoxCount(payDifferenceCount));
-
-Then(
-  'User finds 3 salary differences based on state, year of experience, and travel difference with amounts "{}","{}","{}" respectively',
-  (stateSalaryDifference, yearExpDifference, travelDifference) => {
-    resultPage.verifyStateSalaryDifference(stateSalaryDifference);
-    resultPage.verifyYearOfExperienceValue(yearExpDifference);
-    resultPage.verifyTravelValue(travelDifference);
-  },
-);
+When('Click assign list "{}"', common.clickCheckboxWrapper);
+When('Click tree select "{}" with "{}"', common.clickTreeSelectByName);
+When('Click on the previously created "{}" tree to edit', common.clickTreeByName);
+When('Click on the previously created "{}" tree to delete', common.clickRemoveTreeByName);
